@@ -1,14 +1,7 @@
 <?php
-require "assets/php/login.php";
+require "header.php";
 session_start();
-if (!isset($_SESSION['idUsers'])){
-  header('location:/noteManager/login.php?error=notsignedin');
-  exit(); 
- }
- else
- {
- 	echo $_SESSION['idUsers'];
- }
+
 ?>
 
 <!DOCTYPE html>

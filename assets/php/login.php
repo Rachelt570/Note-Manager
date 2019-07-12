@@ -1,5 +1,5 @@
 <?php
-
+require "../../header.php";
 if(isset($_POST['login-submit'])) {
 
 	require 'dbh.php';
@@ -26,9 +26,10 @@ if(isset($_POST['login-submit'])) {
 			$result = mysqli_stmt_get_result($stmt);
 			if ($row = mysqli_fetch_assoc($result)) 
 			{
-				$passwordCheck = password_verify($password, $row['passwordUsers']);
+
+				$passwordCheck = password_verify($password, $row['Password']);
 				if ($passwordCheck == false) {
-					header("Location: ../../index.php?error=wrongpassword");
+					header("Location: ../../index.php?error=wrongpassword&row=");
 					exit();
 				}
 				else if($passwordCheck == true) {
