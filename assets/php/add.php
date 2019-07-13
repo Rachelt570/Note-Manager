@@ -1,5 +1,8 @@
 <?php
 
+
+
+
 if (isset($_POST['signup-submit'])){
 
 	require 'dbh.php';
@@ -15,7 +18,7 @@ if (isset($_POST['signup-submit'])){
 		exit();
 	}
 	else if (!filter_var($email, FILTER_VALIDATE_EMAIL) && !preg_match("/^[a-zA-Z0-9]*$/", $username)) {
-		header("Location: ../../signup.php?error=invalidmail&id=".$username);
+		header("Location: ../../index.php?error=invalidmail&id=".$username);
 	}
 	else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 		header("Location: ../../signup.php?error=invalidusernameinvalidmail");

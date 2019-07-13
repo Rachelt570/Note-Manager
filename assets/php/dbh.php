@@ -1,5 +1,5 @@
 <?php
-
+require "../../header.php";
 $servername = "localhost";
 $dBUsername = "root";
 $dBPassword = "";

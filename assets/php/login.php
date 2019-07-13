@@ -1,14 +1,13 @@
 <?php
-require "../../header.php";
-if(isset($_POST['login-submit'])) {
 
+if(isset($_POST['login-submit'])) {
 	require 'dbh.php';
 
 	$id = $_POST['id'];
 	$password = $_POST['password'];
 
 	if (empty($id) || empty($password)) {
-		header("Location: ../../login.php?error=emptyfields");
+		header("Location: ../../index.php?error=emptyfields");
 		exit(); 
 	}
 	else {
@@ -16,7 +15,7 @@ if(isset($_POST['login-submit'])) {
 		$sql = "SELECT * FROM users WHERE usernameUsers=?";
 		$stmt = mysqli_stmt_init($conn);
 		if(!mysqli_stmt_prepare($stmt, $sql)) {
-			header("Location: ../../login.php?error=sqlerror");
+			header("Location: ../../index.php?error=sqlerror");
 			exit();
 		}
 		else {
@@ -26,7 +25,6 @@ if(isset($_POST['login-submit'])) {
 			$result = mysqli_stmt_get_result($stmt);
 			if ($row = mysqli_fetch_assoc($result)) 
 			{
-
 				$passwordCheck = password_verify($password, $row['Password']);
 				if ($passwordCheck == false) {
 					header("Location: ../../index.php?error=wrongpassword");
@@ -34,9 +32,9 @@ if(isset($_POST['login-submit'])) {
 				}
 				else if($passwordCheck == true) {
 					session_start();
-					$_SESSION['idUsers'] = $row['idUsers'];
+					$_SESSION['userId'] = $row['idUsers'];
 					$_SESSION['usernameUsers'] = $row['usernameUsers'];
-					header("Location: ../../index.php?login=success");
+					header("Location: ../../index.php?login=success&");
 					exit();
 				}
 				else
@@ -45,7 +43,7 @@ if(isset($_POST['login-submit'])) {
 				}
 			}
 			else {
-				header("Location: ../../login.php?error=nouser");
+				header("Location: ../../index.php?error=nouser");
 				exit();
 			}
 		}		
@@ -54,6 +52,6 @@ if(isset($_POST['login-submit'])) {
 
 }
 else {
-	header("Location: login.php?error=test");
+	header("Location: ../../index.php");
 	exit();
 }

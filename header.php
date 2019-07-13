@@ -1,5 +1,5 @@
 <? php
-	session_start();
+session_start();
 ?>
 
 <!DOCTYPE html>
@@ -15,18 +15,36 @@
 </head>
 <body>
 		<div id = "accountManagement"> 
-			<form action = "assets/php/logout.php" class = "hidden" method = "post"> 
-				<button type = "submit" name = "logout-submit" class = "hidden"> Logout </button>
-			</form> 
-			<button> <a href = "signup.php" id = "Signup"> Sign up </a> </button>
-			<button> <a href = "assets/php/forgotPassword.php" id = "forgotPassword"> Forgot Password </a> </button>
 
-
-			<form action = "assets/php/login.php" method = "post"> 
+		<?php
+			if(isset($_SESSION['usernameUsers']))
+			{
+				echo '<form action = "assets/php/logout.php" method = "post"> 
+					<button type = "submit" name = "logout-submit"> Logout </button>
+					</form>';
+			}
+			else
+			{
+				echo '
+				<button> <a href = "assets/php/forgotPassword.php" id = "forgotPassword"> Forgot Password </a> </button>
+				<button> <a href = "signup.php" id = "Signup"> Sign up </a> </button>
+				<form action = "assets/php/login.php" method = "post"> 
+				
 				<button type = "submit" name = "login-submit"> Login </button>
 				<input type = "password" name = "password" placeholder= "Password"> </input> 
 				<input type="text"  name = "id" placeholder = "Username"> </input>  
-			</form>
+				
+				</form>
+
+				
+				';
+			}
+		?>
+			
+			
+
+
+			
 
 
 			

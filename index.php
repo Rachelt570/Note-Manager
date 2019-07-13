@@ -1,7 +1,6 @@
 <?php
-require "header.php";
 session_start();
-
+require "header.php";
 ?>
 
 <!DOCTYPE html>
