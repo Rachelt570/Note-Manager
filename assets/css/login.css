@@ -1,38 +1,47 @@
 
+body
+{
+	height: 100%;
+}
 header {
 	padding: 30px 0 30px 0;
-	text-align: center; 
+	text-align: center;
+
 }
 
 form {
 
-	display: flex;
+	display: inline;
 	flex-direction: column;
 	align-items: center;
 	padding: 20px 0 0 0;
 }
 form input
 {	
+	display: inline;
+	float: right;
 	text-indent: 10px;
 	width: 10%;
 	height: 30px;
-	margin: 30px 0 0 0;
+	margin: 23px 30px 0 0;
+	padding: 0 100px 0 0;
 }
-form button
+button
 {
+	float: right;
 	margin: 20px 0 0 0;
 	width: 10%;
 	height: 35px;
 }
 
-.hidden 
+#accountManagement
 {
-	display: none;
+	display: inline;
 }
 #accountManagement a
 {
 	margin: 30px 0 30px 0;
-	display: flex;
+	display: inline;
 	flex-direction: row;
 	justify-content: center;
 
@@ -40,4 +49,9 @@ form button
 #accountManagement a:hover
 {
 	color: #f00;
+}
+
+.hidden 
+{
+	display: none;
 }

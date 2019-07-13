@@ -29,7 +29,7 @@ if(isset($_POST['login-submit'])) {
 
 				$passwordCheck = password_verify($password, $row['Password']);
 				if ($passwordCheck == false) {
-					header("Location: ../../index.php?error=wrongpassword&row=");
+					header("Location: ../../index.php?error=wrongpassword");
 					exit();
 				}
 				else if($passwordCheck == true) {
